@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace SdgApps.TimeWise.ActivityJournal.iOS
+namespace SdgApps.TimeWise.ActivityJournal.Ios
 {
     public class Application
     {
