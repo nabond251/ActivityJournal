@@ -1,4 +1,4 @@
-﻿// <copyright file="ItemDetailPage.xaml.cs" company="Soli Deo Gloria Apps">
+﻿// <copyright file="ActivityDetailPage.xaml.cs" company="Soli Deo Gloria Apps">
 // Copyright (c) Soli Deo Gloria Apps. All rights reserved.
 // </copyright>
 
@@ -10,18 +10,18 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
     using Xamarin.Forms;
 
     /// <summary>
-    /// Item details screen.
+    /// Activity details screen.
     /// </summary>
     [DesignTimeVisible(false)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class ActivityDetailPage : ContentPage
     {
-        private readonly ItemDetailViewModel viewModel;
+        private readonly ActivityDetailViewModel viewModel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemDetailPage"/> class.
+        /// Initializes a new instance of the <see cref="ActivityDetailPage"/> class.
         /// </summary>
         /// <param name="viewModel">Backing view model.</param>
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public ActivityDetailPage(ActivityDetailViewModel viewModel)
         {
             this.InitializeComponent();
 
@@ -29,19 +29,19 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemDetailPage"/> class.
+        /// Initializes a new instance of the <see cref="ActivityDetailPage"/> class.
         /// </summary>
-        public ItemDetailPage()
+        public ActivityDetailPage()
         {
             this.InitializeComponent();
 
-            var item = new Item
+            var activity = new Activity
             {
-                Text = "Item 1",
-                Description = "This is an item description.",
+                Title = "Activity 1",
+                Description = "This is an activity description.",
             };
 
-            this.viewModel = new ItemDetailViewModel(item);
+            this.viewModel = new ActivityDetailViewModel(activity);
             this.BindingContext = this.viewModel;
         }
     }

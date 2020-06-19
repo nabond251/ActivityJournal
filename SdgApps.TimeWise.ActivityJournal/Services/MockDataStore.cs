@@ -13,63 +13,63 @@ namespace SdgApps.TimeWise.ActivityJournal.Services
     /// <summary>
     /// Mock data store implementation.
     /// </summary>
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore : IDataStore<Activity>
     {
-        private readonly List<Item> items;
+        private readonly List<Activity> activities;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MockDataStore"/> class.
         /// </summary>
         public MockDataStore()
         {
-            this.items = new List<Item>()
+            this.activities = new List<Activity>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description = "This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description = "This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description = "This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description = "This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description = "This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description = "This is an item description." },
+                new Activity { Id = Guid.NewGuid().ToString(), Title = "First item", Description = "This is an item description." },
+                new Activity { Id = Guid.NewGuid().ToString(), Title = "Second item", Description = "This is an item description." },
+                new Activity { Id = Guid.NewGuid().ToString(), Title = "Third item", Description = "This is an item description." },
+                new Activity { Id = Guid.NewGuid().ToString(), Title = "Fourth item", Description = "This is an item description." },
+                new Activity { Id = Guid.NewGuid().ToString(), Title = "Fifth item", Description = "This is an item description." },
+                new Activity { Id = Guid.NewGuid().ToString(), Title = "Sixth item", Description = "This is an item description." },
             };
         }
 
         /// <inheritdoc/>
-        public async Task<bool> AddItemAsync(Item item)
+        public Task<bool> AddItemAsync(Activity item)
         {
-            this.items.Add(item);
+            this.activities.Add(item);
 
-            return await Task.FromResult(true);
+            return Task.FromResult(true);
         }
 
         /// <inheritdoc/>
-        public async Task<bool> UpdateItemAsync(Item item)
+        public Task<bool> UpdateItemAsync(Activity item)
         {
-            var oldItem = this.items.FirstOrDefault((Item arg) => arg.Id == item.Id);
-            this.items.Remove(oldItem);
-            this.items.Add(item);
+            var oldActivity = this.activities.FirstOrDefault((a) => a.Id == item.Id);
+            this.activities.Remove(oldActivity);
+            this.activities.Add(item);
 
-            return await Task.FromResult(true);
+            return Task.FromResult(true);
         }
 
         /// <inheritdoc/>
-        public async Task<bool> DeleteItemAsync(string id)
+        public Task<bool> DeleteItemAsync(string id)
         {
-            var oldItem = this.items.FirstOrDefault((Item arg) => arg.Id == id);
-            this.items.Remove(oldItem);
+            var oldActivity = this.activities.FirstOrDefault((Activity arg) => arg.Id == id);
+            this.activities.Remove(oldActivity);
 
-            return await Task.FromResult(true);
+            return Task.FromResult(true);
         }
 
         /// <inheritdoc/>
-        public async Task<Item> GetItemAsync(string id)
+        public Task<Activity> GetItemAsync(string id)
         {
-            return await Task.FromResult(this.items.FirstOrDefault(s => s.Id == id));
+            return Task.FromResult(this.activities.FirstOrDefault(s => s.Id == id));
         }
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        public Task<IEnumerable<Activity>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await Task.FromResult(this.items);
+            return Task.FromResult<IEnumerable<Activity>>(this.activities);
         }
     }
 }

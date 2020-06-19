@@ -1,4 +1,4 @@
-﻿// <copyright file="NewItemPage.xaml.cs" company="Soli Deo Gloria Apps">
+﻿// <copyright file="NewActivityPage.xaml.cs" company="Soli Deo Gloria Apps">
 // Copyright (c) Soli Deo Gloria Apps. All rights reserved.
 // </copyright>
 
@@ -10,35 +10,35 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
     using Xamarin.Forms;
 
     /// <summary>
-    /// Add new item screen.
+    /// Add new activity screen.
     /// </summary>
     [DesignTimeVisible(false)]
-    public partial class NewItemPage : ContentPage
+    public partial class NewActivityPage : ContentPage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NewItemPage"/> class.
+        /// Initializes a new instance of the <see cref="NewActivityPage"/> class.
         /// </summary>
-        public NewItemPage()
+        public NewActivityPage()
         {
             this.InitializeComponent();
 
-            this.Item = new Item
+            this.Activity = new Activity
             {
-                Text = "Item name",
-                Description = "This is an item description.",
+                Title = "Activity name",
+                Description = "This is an activity description.",
             };
 
             this.BindingContext = this;
         }
 
         /// <summary>
-        /// Gets or sets item being added.
+        /// Gets or sets activity being added.
         /// </summary>
-        public Item Item { get; set; }
+        public Activity Activity { get; set; }
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", this.Item);
+            MessagingCenter.Send(this, "AddActivity", this.Activity);
             await this.Navigation.PopModalAsync();
         }
 

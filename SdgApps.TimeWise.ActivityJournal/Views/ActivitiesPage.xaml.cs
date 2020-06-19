@@ -1,4 +1,4 @@
-﻿// <copyright file="ItemsPage.xaml.cs" company="Soli Deo Gloria Apps">
+﻿// <copyright file="ActivitiesPage.xaml.cs" company="Soli Deo Gloria Apps">
 // Copyright (c) Soli Deo Gloria Apps. All rights reserved.
 // </copyright>
 
@@ -11,21 +11,21 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
     using Xamarin.Forms;
 
     /// <summary>
-    /// Items list screen.
+    /// Activities list screen.
     /// </summary>
     [DesignTimeVisible(false)]
-    public partial class ItemsPage : ContentPage
+    public partial class ActivitiesPage : ContentPage
     {
-        private readonly ItemsViewModel viewModel;
+        private readonly ActivitiesViewModel viewModel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemsPage"/> class.
+        /// Initializes a new instance of the <see cref="ActivitiesPage"/> class.
         /// </summary>
-        public ItemsPage()
+        public ActivitiesPage()
         {
             this.InitializeComponent();
 
-            this.BindingContext = this.viewModel = new ItemsViewModel();
+            this.BindingContext = this.viewModel = new ActivitiesViewModel();
         }
 
         /// <inheritdoc/>
@@ -33,7 +33,7 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
         {
             base.OnAppearing();
 
-            if (this.viewModel.Items.Count == 0)
+            if (this.viewModel.Activities.Count == 0)
             {
                 this.viewModel.IsBusy = true;
             }
@@ -42,13 +42,13 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
         private async void OnItemSelected(object sender, EventArgs args)
         {
             var layout = (BindableObject)sender;
-            var item = (Item)layout.BindingContext;
-            await this.Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            var activity = (Activity)layout.BindingContext;
+            await this.Navigation.PushAsync(new ActivityDetailPage(new ActivityDetailViewModel(activity)));
         }
 
-        private async void AddItem_Clicked(object sender, EventArgs e)
+        private async void AddActivity_Clicked(object sender, EventArgs e)
         {
-            await this.Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await this.Navigation.PushModalAsync(new NavigationPage(new NewActivityPage()));
         }
     }
 }

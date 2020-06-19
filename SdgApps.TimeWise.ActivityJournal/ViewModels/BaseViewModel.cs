@@ -24,9 +24,9 @@ namespace SdgApps.TimeWise.ActivityJournal.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Gets the items data store.
+        /// Gets the activities data store.
         /// </summary>
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Activity> DataStore => DependencyService.Get<IDataStore<Activity>>();
 
         /// <summary>
         /// Gets or sets a value indicating whether the view is busy.
