@@ -4,6 +4,7 @@
 
 namespace SdgApps.TimeWise.ActivityJournal.Views
 {
+    using System;
     using System.ComponentModel;
     using SdgApps.TimeWise.ActivityJournal.Models;
     using SdgApps.TimeWise.ActivityJournal.ViewModels;
@@ -38,7 +39,10 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
             var activity = new Activity
             {
                 Title = "Activity 1",
+                Start = DateTime.Now.AddHours(-1.0d),
+                End = DateTime.Now,
                 Description = "This is an activity description.",
+                Category = "Activity",
             };
 
             this.viewModel = new ActivityDetailViewModel(activity);

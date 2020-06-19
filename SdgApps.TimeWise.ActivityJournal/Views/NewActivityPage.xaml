@@ -14,10 +14,16 @@
     
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
+            <Label Text="Title" FontSize="Medium" />
             <Entry Text="{Binding Activity.Title}" d:Text="Activity name" FontSize="Small" />
+            <Label Text="Start" FontSize="Medium" />
+            <DatePicker Date="{Binding Activity.Start}" FontSize="Small" />
+            <Label Text="End" FontSize="Medium" />
+            <DatePicker Date="{Binding Activity.End}" FontSize="Small" />
             <Label Text="Description" FontSize="Medium" />
             <Editor Text="{Binding Activity.Description}" d:Text="Activity description" FontSize="Small" Margin="0" />
+            <Label Text="Category" FontSize="Medium" />
+            <Entry Text="{Binding Activity.Category}" d:Text="Activity category" FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
     

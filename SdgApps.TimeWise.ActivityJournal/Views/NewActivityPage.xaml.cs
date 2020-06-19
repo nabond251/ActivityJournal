@@ -25,7 +25,10 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
             this.Activity = new Activity
             {
                 Title = "Activity name",
+                Start = DateTime.Now.AddHours(-1.0d),
+                End = DateTime.Now,
                 Description = "This is an activity description.",
+                Category = "Activity",
             };
 
             this.BindingContext = this;

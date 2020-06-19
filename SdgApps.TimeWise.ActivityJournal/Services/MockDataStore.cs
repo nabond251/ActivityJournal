@@ -24,12 +24,60 @@ namespace SdgApps.TimeWise.ActivityJournal.Services
         {
             this.activities = new List<Activity>()
             {
-                new Activity { Id = Guid.NewGuid().ToString(), Title = "First item", Description = "This is an item description." },
-                new Activity { Id = Guid.NewGuid().ToString(), Title = "Second item", Description = "This is an item description." },
-                new Activity { Id = Guid.NewGuid().ToString(), Title = "Third item", Description = "This is an item description." },
-                new Activity { Id = Guid.NewGuid().ToString(), Title = "Fourth item", Description = "This is an item description." },
-                new Activity { Id = Guid.NewGuid().ToString(), Title = "Fifth item", Description = "This is an item description." },
-                new Activity { Id = Guid.NewGuid().ToString(), Title = "Sixth item", Description = "This is an item description." },
+                new Activity
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Title = "First activity",
+                    Start = DateTime.Now.AddHours(-1.0d),
+                    End = DateTime.Now,
+                    Description = "This is an activity description.",
+                    Category = "Activity",
+                },
+                new Activity
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Title = "Second activity",
+                    Start = DateTime.Now.AddHours(-1.0d),
+                    End = DateTime.Now,
+                    Description = "This is an activity description.",
+                    Category = "Activity",
+                },
+                new Activity
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Title = "Third activity",
+                    Start = DateTime.Now.AddHours(-1.0d),
+                    End = DateTime.Now,
+                    Description = "This is an activity description.",
+                    Category = "Activity",
+                },
+                new Activity
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Title = "Fourth activity",
+                    Start = DateTime.Now.AddHours(-1.0d),
+                    End = DateTime.Now,
+                    Description = "This is an activity description.",
+                    Category = "Activity",
+                },
+                new Activity
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Title = "Fifth activity",
+                    Start = DateTime.Now.AddHours(-1.0d),
+                    End = DateTime.Now,
+                    Description = "This is an activity description.",
+                    Category = "Activity",
+                },
+                new Activity
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Title = "Sixth activity",
+                    Start = DateTime.Now.AddHours(-1.0d),
+                    End = DateTime.Now,
+                    Description = "This is an activity description.",
+                    Category = "Activity",
+                },
             };
         }
 
