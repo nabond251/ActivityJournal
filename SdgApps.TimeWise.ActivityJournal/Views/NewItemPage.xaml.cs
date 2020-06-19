@@ -1,42 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using SdgApps.TimeWise.ActivityJournal.Models;
+﻿// <copyright file="NewItemPage.xaml.cs" company="Soli Deo Gloria Apps">
+// Copyright (c) Soli Deo Gloria Apps. All rights reserved.
+// </copyright>
 
 namespace SdgApps.TimeWise.ActivityJournal.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
+    using System;
+    using System.ComponentModel;
+    using SdgApps.TimeWise.ActivityJournal.Models;
+    using Xamarin.Forms;
+
+    /// <summary>
+    /// Add new item screen.
+    /// </summary>
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewItemPage"/> class.
+        /// </summary>
         public NewItemPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            Item = new Item
+            this.Item = new Item
             {
                 Text = "Item name",
-                Description = "This is an item description."
+                Description = "This is an item description.",
             };
 
-            BindingContext = this;
+            this.BindingContext = this;
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
+        /// <summary>
+        /// Gets or sets item being added.
+        /// </summary>
+        public Item Item { get; set; }
+
+        private async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
-            await Navigation.PopModalAsync();
+            MessagingCenter.Send(this, "AddItem", this.Item);
+            await this.Navigation.PopModalAsync();
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
+        private async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await this.Navigation.PopModalAsync();
         }
     }
 }

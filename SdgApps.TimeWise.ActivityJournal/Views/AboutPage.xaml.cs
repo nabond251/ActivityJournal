@@ -1,18 +1,24 @@
-﻿using System;
-using System.ComponentModel;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿// <copyright file="AboutPage.xaml.cs" company="Soli Deo Gloria Apps">
+// Copyright (c) Soli Deo Gloria Apps. All rights reserved.
+// </copyright>
 
 namespace SdgApps.TimeWise.ActivityJournal.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
+    using System.ComponentModel;
+    using Xamarin.Forms;
+
+    /// <summary>
+    /// About screen.
+    /// </summary>
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AboutPage"/> class.
+        /// </summary>
         public AboutPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

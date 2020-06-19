@@ -1,50 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using SdgApps.TimeWise.ActivityJournal.Models;
-using SdgApps.TimeWise.ActivityJournal.Views;
-using SdgApps.TimeWise.ActivityJournal.ViewModels;
+﻿// <copyright file="ItemsPage.xaml.cs" company="Soli Deo Gloria Apps">
+// Copyright (c) Soli Deo Gloria Apps. All rights reserved.
+// </copyright>
 
 namespace SdgApps.TimeWise.ActivityJournal.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
+    using System;
+    using System.ComponentModel;
+    using SdgApps.TimeWise.ActivityJournal.Models;
+    using SdgApps.TimeWise.ActivityJournal.ViewModels;
+    using Xamarin.Forms;
+
+    /// <summary>
+    /// Items list screen.
+    /// </summary>
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        private readonly ItemsViewModel viewModel;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ItemsPage"/> class.
+        /// </summary>
         public ItemsPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            this.BindingContext = this.viewModel = new ItemsViewModel();
         }
 
-        async void OnItemSelected(object sender, EventArgs args)
-        {
-            var layout = (BindableObject)sender;
-            var item = (Item)layout.BindingContext;
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
-        }
-
+        /// <inheritdoc/>
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.IsBusy = true;
+            if (this.viewModel.Items.Count == 0)
+            {
+                this.viewModel.IsBusy = true;
+            }
+        }
+
+        private async void OnItemSelected(object sender, EventArgs args)
+        {
+            var layout = (BindableObject)sender;
+            var item = (Item)layout.BindingContext;
+            await this.Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+        }
+
+        private async void AddItem_Clicked(object sender, EventArgs e)
+        {
+            await this.Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
     }
 }
