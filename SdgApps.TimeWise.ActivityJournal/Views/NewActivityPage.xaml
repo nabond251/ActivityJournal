@@ -13,18 +13,22 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Title" FontSize="Medium" />
-            <Entry Text="{Binding Activity.Title}" d:Text="Activity name" FontSize="Small" />
-            <Label Text="Start" FontSize="Medium" />
-            <DatePicker Date="{Binding Activity.Start}" FontSize="Small" />
-            <Label Text="End" FontSize="Medium" />
-            <DatePicker Date="{Binding Activity.End}" FontSize="Small" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Activity.Description}" d:Text="Activity description" FontSize="Small" Margin="0" />
-            <Label Text="Category" FontSize="Medium" />
-            <Entry Text="{Binding Activity.Category}" d:Text="Activity category" FontSize="Small" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Title" FontSize="Medium" />
+                <Entry Text="{Binding Title}" d:Text="Activity name" FontSize="Small" />
+                <Label Text="Start" FontSize="Medium" />
+                <DatePicker Date="{Binding StartDate}" FontSize="Small" />
+                <TimePicker Time="{Binding StartTime}" FontSize="Small" />
+                <Label Text="End" FontSize="Medium" />
+                <DatePicker Date="{Binding EndDate}" FontSize="Small" />
+                <TimePicker Time="{Binding EndTime}" FontSize="Small" />
+                <Label Text="Description" FontSize="Medium" />
+                <Editor Text="{Binding Description}" d:Text="Activity description" FontSize="Small" Margin="0" />
+                <Label Text="Category" FontSize="Medium" />
+                <Entry Text="{Binding Category}" d:Text="Activity category" FontSize="Small" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
     
 </ContentPage>

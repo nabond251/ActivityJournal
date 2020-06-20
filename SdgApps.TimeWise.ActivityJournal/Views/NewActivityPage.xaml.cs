@@ -7,6 +7,7 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
     using System;
     using System.ComponentModel;
     using SdgApps.TimeWise.ActivityJournal.Models;
+    using SdgApps.TimeWise.ActivityJournal.ViewModels;
     using Xamarin.Forms;
 
     /// <summary>
@@ -15,6 +16,8 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
     [DesignTimeVisible(false)]
     public partial class NewActivityPage : ContentPage
     {
+        private readonly NewActivityViewModel viewModel;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NewActivityPage"/> class.
         /// </summary>
@@ -22,26 +25,35 @@ namespace SdgApps.TimeWise.ActivityJournal.Views
         {
             this.InitializeComponent();
 
-            this.Activity = new Activity
+            var now = DateTime.Now;
+            var then = now.AddHours(-1.0d);
+
+            this.viewModel = new NewActivityViewModel
             {
                 Title = "Activity name",
-                Start = DateTime.Now.AddHours(-1.0d),
-                End = DateTime.Now,
+                StartDate = then.Date,
+                StartTime = then.TimeOfDay,
+                EndDate = now.Date,
+                EndTime = now.TimeOfDay,
                 Description = "This is an activity description.",
                 Category = "Activity",
             };
 
-            this.BindingContext = this;
+            this.BindingContext = this.viewModel;
         }
-
-        /// <summary>
-        /// Gets or sets activity being added.
-        /// </summary>
-        public Activity Activity { get; set; }
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddActivity", this.Activity);
+            var activity = new Activity
+            {
+                Title = this.viewModel.Title,
+                Start = this.viewModel.StartDate.Date + this.viewModel.StartTime,
+                End = this.viewModel.EndDate.Date + this.viewModel.EndTime,
+                Description = this.viewModel.Description,
+                Category = this.viewModel.Category,
+            };
+
+            MessagingCenter.Send(this, "AddActivity", activity);
             await this.Navigation.PopModalAsync();
         }
 
